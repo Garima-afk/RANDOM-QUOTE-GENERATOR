@@ -1,4 +1,3 @@
-
 # 🎉 Random Quote Generator 🎉
 
 Feeling down? Need a little inspiration? This **Random Quote Generator** is here to brighten your day! With every click of the "Generate New Quote" button, a fresh dose of motivation and wisdom appears on your screen, served with a side of cool animations. ✨
