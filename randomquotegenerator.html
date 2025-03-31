@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #56ccf2, #6e7dff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .quote-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            transition: all 0.5s ease-in-out;
+        }
+        .quote-text {
+            font-size: 24px;
+            color: #333;
+            margin: 20px 0;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        .quote-author {
+            font-size: 18px;
+            color: #555;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
+        }
+        .generate-btn {
+            background-color: #6e7dff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        .generate-btn:hover {
+            background-color: #4b56d6;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quote-container">
+        <div class="quote-text" id="quoteText">"Believe in yourself!"</div>
+        <div class="quote-author" id="quoteAuthor">- Unknown</div>
+        <button class="generate-btn" onclick="generateQuote()">Generate New Quote</button>
+    </div>
+
+    <script>
+        const quotes = [
+            {
+                text: "The best way to predict the future is to create it.",
+                author: "- Abraham Lincoln"
+            },
+            {
+                text: "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+                author: "- Winston Churchill"
+            },
+            {
+                text: "It does not matter how slowly you go as long as you do not stop.",
+                author: "- Confucius"
+            },
+            {
+                text: "The only way to do great work is to love what you do.",
+                author: "- Steve Jobs"
+            },
+            {
+                text: "You are never too old to set another goal or to dream a new dream.",
+                author: "- C.S. Lewis"
+            },
+            {
+                text: "It always seems impossible until it’s done.",
+                author: "- Nelson Mandela"
+            },
+            {
+                text: "Success is not how high you have climbed, but how you make a positive difference to the world.",
+                author: "- Roy T. Bennett"
+            }
+        ];
+
+        function generateQuote() {
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            const quoteText = document.getElementById("quoteText");
+            const quoteAuthor = document.getElementById("quoteAuthor");
+
+            // Reset animation
+            quoteText.style.animation = 'none';
+            quoteAuthor.style.animation = 'none';
+
+            // Trigger reflow to restart the animation
+            quoteText.offsetHeight; 
+
+            // Update text and author
+            quoteText.textContent = `"${randomQuote.text}"`;
+            quoteAuthor.textContent = randomQuote.author;
+
+            // Reapply animation
+            quoteText.style.animation = 'fadeIn 1s forwards';
+            quoteAuthor.style.animation = 'fadeIn 1s forwards';
+            quoteAuthor.style.animationDelay = '0.5s';
+        }
+    </script>
+
+</body>
+</html>
